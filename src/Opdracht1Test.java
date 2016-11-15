@@ -15,13 +15,39 @@ public class Opdracht1Test {
         long totalTime = endTime - startTime;
         return totalTime; */
 
-        int[] ar = Opdracht1.algorithmOne(6);
-        bubbleSort(ar);
-        printIntArray(ar);
-        testArray(ar);
+        //int[] ar = Opdracht1.algorithmOne(6);
+        //int[] ar = Opdracht1.algorithmTwo(6);
+
+
+
+        long[] times;
+        int runs = 10;
+        long total = 0;
+        times = new long[runs];
+        for(int i = 0; i < runs; i++) {
+            long startTime = System.currentTimeMillis();
+
+            int[] ar = Opdracht1.algorithmThree(5000);
+
+            long endTime = System.currentTimeMillis();
+            long check = endTime - startTime;
+            System.out.println(check);
+            times[i] = check;
+
+            //printIntArray(ar);
+            bubbleSort(ar);
+            //printIntArray(ar);
+            testArray(ar);
+        }
+
+        for (long time : times) {
+            total = total + time;
+        }
     }
 
-    public static void bubbleSort(int[] numbers) {
+
+
+    public void bubbleSort(int[] numbers) {
 
         boolean finished = false;
         while (!finished) {
@@ -39,7 +65,7 @@ public class Opdracht1Test {
 
     }
 
-    public static boolean testArray(int[] ar) {
+    public boolean testArray(int[] ar) {
         int previous = 0;
         if (ar[0] != 0) {
             return false;
@@ -56,7 +82,7 @@ public class Opdracht1Test {
         return true;
     }
 
-    public static void printIntArray(int[] array) {
+    public void printIntArray(int[] array) {
         for (int number: array) {
             System.out.printf(number + " ");
         }
